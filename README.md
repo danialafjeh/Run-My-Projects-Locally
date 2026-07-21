@@ -843,3 +843,403 @@ Check:
 
 # ✅ Completed
 <hr>
+# 🍎 macOS Setup Guide
+
+This guide explains how to run my projects locally on **macOS using the Terminal**.
+
+Follow each step carefully to prepare your environment, install dependencies, configure the project, and run the development server.
+
+> All commands in this section are written for the macOS Terminal.
+
+---
+
+# 1. Open Terminal
+
+Open the Terminal application:
+
+1. Press `Command (⌘) + Space`
+2. Search for:
+
+```text
+Terminal
+```
+
+3. Press `Enter`
+
+---
+
+# 2. Install Homebrew
+
+Homebrew is a package manager for macOS that makes installing development tools easier.
+
+Check if Homebrew is installed:
+
+```bash
+brew --version
+```
+
+If Homebrew is not installed, install it from the official website:
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+After installation, restart Terminal.
+
+---
+
+# 3. Install Required Tools
+
+## Install Python
+
+Check Python:
+
+```bash
+python3 --version
+```
+
+If Python is not installed:
+
+```bash
+brew install python
+```
+
+---
+
+## Check pip
+
+Run:
+
+```bash
+pip3 --version
+```
+
+---
+
+## Install Git
+
+Check Git:
+
+```bash
+git --version
+```
+
+Git is usually installed by default on macOS.
+
+If Git is not available:
+
+```bash
+brew install git
+```
+
+---
+
+# 4. Install virtualenv
+
+Install virtualenv:
+
+```bash
+pip3 install virtualenv
+```
+
+Check installation:
+
+```bash
+virtualenv --version
+```
+
+---
+
+# 5. Clone the Project Repository
+
+Navigate to the location where you want to save the project.
+
+Example:
+
+```bash
+cd Desktop
+```
+
+Clone the repository:
+
+```bash
+git clone Repository_URL
+```
+
+Move into the project folder:
+
+```bash
+cd Project_Name
+```
+
+---
+
+# 6. Create a Virtual Environment
+
+Create the virtual environment:
+
+```bash
+virtualenv denv
+```
+
+A new folder named `denv` will be created.
+
+Example:
+
+```text
+Project_Name
+│
+├── denv
+├── manage.py
+├── requirements.txt
+└── project_folder
+```
+
+> The virtual environment folder is not included in the GitHub repository. Each user must create their own environment locally.
+
+---
+
+# 7. Activate the Virtual Environment
+
+Activate the environment:
+
+```bash
+source denv/bin/activate
+```
+
+After activation:
+
+```text
+(denv) user@MacBook Project_Name %
+```
+
+The `(denv)` label means the environment is active.
+
+---
+
+# 8. Install Project Dependencies
+
+Install required packages:
+
+```bash
+pip install -r requirements.txt
+```
+
+All package versions are already defined in:
+
+```text
+requirements.txt
+```
+
+---
+
+# 9. Configure Project Settings
+
+Check the Django project structure:
+
+```text
+Project_Name
+│
+├── manage.py
+│
+├── project_folder
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+│
+└── apps
+    ├── models.py
+    ├── views.py
+    └── admin.py
+```
+
+Configure required settings depending on the project:
+
+* Database settings
+* Environment variables
+* Secret keys
+* External services
+
+---
+
+# 10. Configure Database
+
+## SQLite Projects
+
+No additional setup is required.
+
+Continue to migrations.
+
+---
+
+## PostgreSQL Projects
+
+Install PostgreSQL using Homebrew:
+
+```bash
+brew install postgresql
+```
+
+Start PostgreSQL:
+
+```bash
+brew services start postgresql
+```
+
+Check PostgreSQL:
+
+```bash
+brew services list
+```
+
+Create a database:
+
+```bash
+createdb database_name
+```
+
+Update Django database settings:
+
+```python
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "database_name",
+        "USER": "your_username",
+        "PASSWORD": "your_password",
+        "HOST": "localhost",
+        "PORT": "5432",
+    }
+}
+```
+
+Use your local PostgreSQL username and password.
+
+---
+
+# 11. Apply Django Migrations
+
+Create migrations:
+
+```bash
+python3 manage.py makemigrations
+```
+
+Apply migrations:
+
+```bash
+python3 manage.py migrate
+```
+
+---
+
+# 12. Create Django Admin Account
+
+Create a superuser:
+
+```bash
+python3 manage.py createsuperuser
+```
+
+Enter:
+
+```text
+Username:
+Email address:
+Password:
+```
+
+Admin panel:
+
+```text
+http://127.0.0.1:8000/admin/
+```
+
+---
+
+# 13. Run the Development Server
+
+Start Django:
+
+```bash
+python3 manage.py runserver
+```
+
+Successful output:
+
+```text
+Starting development server at http://127.0.0.1:8000/
+```
+
+Open your browser:
+
+```text
+http://127.0.0.1:8000/
+```
+
+Your project is now running locally on macOS.
+
+---
+
+# 14. Stop the Server
+
+Press:
+
+```text
+CTRL + C
+```
+
+inside Terminal.
+
+---
+
+# 15. Deactivate Virtual Environment
+
+When finished:
+
+```bash
+deactivate
+```
+
+---
+
+# Common macOS Issues
+
+## Command Not Found
+
+If a command is not recognized:
+
+* Check that the required tool is installed.
+* Restart Terminal after installation.
+
+---
+
+## Package Installation Error
+
+Make sure the virtual environment is active:
+
+```bash
+source denv/bin/activate
+```
+
+Then:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## PostgreSQL Connection Error
+
+Check:
+
+* PostgreSQL service is running
+* Database exists
+* Username and password are correct
+* Django settings match your local database
+
+---
+
+# ✅ Completed
+<hr>
