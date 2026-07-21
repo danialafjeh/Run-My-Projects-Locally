@@ -25,6 +25,8 @@ Instructions are provided for all major desktop operating systems, including **W
 
 # Windows Setup Guide
 
+<img src="https://img.shields.io/badge/Only_For-Django_Projects-darkgreen">
+
 This guide explains how to run my projects locally on **Windows using Command Prompt (CMD)**.
 
 Follow the steps below carefully to set up the project, install required dependencies, configure the database, and run the development server on your computer.
