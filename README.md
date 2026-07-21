@@ -1,8 +1,8 @@
 <h1 align="center"><img src="https://github.com/danialafjeh/Run-My-Projects-Locally/blob/main/RunLocally.gif?raw=true" width="60%" alt="Intro"></h1>
 <h1 align="center">
-  <img src="https://img.shields.io/badge/Windows-0078D4?logo=None&logoColor=white" width="7.5%" height="7.5%">
-  <img src="https://img.shields.io/badge/Linux-FCC624?logo=None&logoColor=black" width="5%" height="5%">
-  <img src="https://img.shields.io/badge/macOS-555555?logo=None&logoColor=white" width="6.5%" height="6.5%">
+  <img src="https://img.shields.io/badge/Windows-0078D4?logo=None&logoColor=white" width="8.5%" height="8.5%">
+  <img src="https://img.shields.io/badge/Linux-FCC624?logo=None&logoColor=black" width="6%" height="6%">
+  <img src="https://img.shields.io/badge/macOS-555555?logo=None&logoColor=white" width="7.5%" height="7.5%">
 </h1>
 <br>
 <h3 align="left">
