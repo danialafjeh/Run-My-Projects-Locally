@@ -16,11 +16,9 @@ Instructions are provided for all major desktop operating systems, including **W
 </h3>
 <hr>
 <h2>📑 Table of Contents</h2>
-<ul>
 - [Windows](#windows-setup-guide)
 - [Linux](#linux-setup-guide)
 - [macOS](#macos-setup-guide)
-</ul>
 <hr>
 # Windows Setup Guide
 
