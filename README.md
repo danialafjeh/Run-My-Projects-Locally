@@ -14,6 +14,8 @@ The guide covers the entire setup process, from cloning a repository and creatin
   
 Instructions are provided for all major desktop operating systems, including **Windows**, **Linux**, and **macOS**. Where commands or procedures differ between operating systems, each platform is explained separately to ensure a smooth setup experience.
 
+‼️💻 If the project is an API project, after running server, use softwares like postman or insomnia to test and work with API's endpoints.
+
 <hr>
 <h2>📑 Table of Contents</h2>
 
