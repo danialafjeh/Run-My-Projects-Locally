@@ -9,6 +9,5 @@
 This repository provides a complete step-by-step guide for running my projects on your local machine. You'll find detailed instructions to help you set everything up correctly.
   
 The guide covers the entire setup process, from cloning a repository and creating a virtual environment to installing dependencies, configuring the database, running migrations, and starting the development server.
-
 Instructions are provided for all major desktop operating systems, including **Windows**, **Linux**, and **macOS**. Where commands or procedures differ between operating systems, each platform is explained separately to ensure a smooth setup experience.
 </h3>
