@@ -2,6 +2,6 @@
 <h1 align="center">
   <img src="https://img.shields.io/badge/Windows-0078D4?logo=None&logoColor=white" width="7%" height="7%">
   <img src="https://img.shields.io/badge/Linux-FCC624?logo=None&logoColor=black" width="5%" height="5%">
-  <img src="https://img.shields.io/badge/macOS-555555?logo=None&logoColor=white" width="5%" height="5%">
+  <img src="https://img.shields.io/badge/macOS-555555?logo=None&logoColor=white" width="6%" height="6%">
   
 </h1>
