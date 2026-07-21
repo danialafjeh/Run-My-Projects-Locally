@@ -452,6 +452,8 @@ http://127.0.0.1:8080/
 
 # Linux Setup Guide
 
+<img src="https://img.shields.io/badge/Only_For-Django_Projects-darkgreen">
+
 This guide explains how to run my projects locally on **Linux using the Terminal**.
 
 Follow each step carefully to prepare your environment, install dependencies, configure the project, and run the development server.
@@ -849,6 +851,8 @@ Check:
 <hr>
 
 # macOS Setup Guide
+
+<img src="https://img.shields.io/badge/Only_For-Django_Projects-darkgreen">
 
 This guide explains how to run my projects locally on **macOS using the Terminal**.
 
