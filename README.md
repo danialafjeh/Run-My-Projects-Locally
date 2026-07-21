@@ -21,3 +21,4 @@ Instructions are provided for all major desktop operating systems, including **W
   <li><a href="#-linux">🐧 Linux</a></li>
   <li><a href="#-macos">🍎 macOS</a></li>
 </ul>
+<hr>
