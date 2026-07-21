@@ -5,7 +5,7 @@
   <img src="https://img.shields.io/badge/macOS-555555?logo=None&logoColor=white" >
 </h1>
 <br>
-<h3 align="left">
+
 This repository provides a complete step-by-step guide for running my projects on your local machine. You'll find detailed instructions to help you set everything up correctly.
 <br>
   
@@ -13,7 +13,7 @@ The guide covers the entire setup process, from cloning a repository and creatin
 <br>
   
 Instructions are provided for all major desktop operating systems, including **Windows**, **Linux**, and **macOS**. Where commands or procedures differ between operating systems, each platform is explained separately to ensure a smooth setup experience.
-</h3>
+
 <hr>
 <h2>📑 Table of Contents</h2>
 
