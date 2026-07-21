@@ -142,7 +142,11 @@ A virtual environment keeps the project's packages separate from your system Pyt
 Create a virtual environment:
 
 ```cmd
-python -m venv denv
+pip install virtualenv
+```
+then:
+```cmd
+virtualenv denv
 ```
 
 A new folder named `denv` will be created.
