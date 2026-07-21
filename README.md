@@ -17,12 +17,12 @@ Instructions are provided for all major desktop operating systems, including **W
 <hr>
 <h2>📑 Table of Contents</h2>
 <ul>
-  <li><a href="#-windows">🪟 Windows</a></li>
-  <li><a href="#-linux">🐧 Linux</a></li>
-  <li><a href="#-macos">🍎 macOS</a></li>
+- [Windows](#windows-setup-guide)
+- [Linux](#linux-setup-guide)
+- [macOS](#macos-setup-guide)
 </ul>
 <hr>
-# 🪟 Windows Setup Guide
+# Windows Setup Guide
 
 This guide explains how to run my projects locally on **Windows using Command Prompt (CMD)**.
 
@@ -446,7 +446,7 @@ http://127.0.0.1:8080/
 
 # ✅ Completed
 <hr>
-# 🐧 Linux Setup Guide
+# Linux Setup Guide
 
 This guide explains how to run my projects locally on **Linux using the Terminal**.
 
@@ -843,7 +843,7 @@ Check:
 
 # ✅ Completed
 <hr>
-# 🍎 macOS Setup Guide
+# macOS Setup Guide
 
 This guide explains how to run my projects locally on **macOS using the Terminal**.
 
