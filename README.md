@@ -22,6 +22,7 @@ Instructions are provided for all major desktop operating systems, including **W
 - [macOS](#macos-setup-guide)
   
 <hr>
+
 # Windows Setup Guide
 
 This guide explains how to run my projects locally on **Windows using Command Prompt (CMD)**.
