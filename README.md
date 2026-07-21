@@ -14,3 +14,10 @@ The guide covers the entire setup process, from cloning a repository and creatin
   
 Instructions are provided for all major desktop operating systems, including **Windows**, **Linux**, and **macOS**. Where commands or procedures differ between operating systems, each platform is explained separately to ensure a smooth setup experience.
 </h3>
+<h2>📑 Table of Contents</h2>
+
+<ul>
+  <li><a href="#-windows">🪟 Windows</a></li>
+  <li><a href="#-linux">🐧 Linux</a></li>
+  <li><a href="#-macos">🍎 macOS</a></li>
+</ul>
