@@ -17,9 +17,9 @@ Instructions are provided for all major desktop operating systems, including **W
 <hr>
 <h2>📑 Table of Contents</h2>
 
-- [Windows](#windows-setup-guide)
-- [Linux](#linux-setup-guide)
-- [macOS](#macos-setup-guide)
+- [ِDjango Projects | Windows](#windows-setup-guide)
+- [Django Projects | Linux](#linux-setup-guide)
+- [Django Projects | macOS](#macos-setup-guide)
   
 <hr>
 
