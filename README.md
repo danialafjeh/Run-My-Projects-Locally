@@ -447,6 +447,7 @@ http://127.0.0.1:8080/
 
 # ✅ Completed
 <hr>
+
 # Linux Setup Guide
 
 This guide explains how to run my projects locally on **Linux using the Terminal**.
@@ -844,6 +845,7 @@ Check:
 
 # ✅ Completed
 <hr>
+
 # macOS Setup Guide
 
 This guide explains how to run my projects locally on **macOS using the Terminal**.
