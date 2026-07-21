@@ -445,4 +445,401 @@ http://127.0.0.1:8080/
 ---
 
 # ✅ Completed
+<hr>
+# 🐧 Linux Setup Guide
 
+This guide explains how to run my projects locally on **Linux using the Terminal**.
+
+Follow each step carefully to prepare your environment, install dependencies, configure the project, and run the development server.
+
+> All commands in this section are written for the Linux Terminal.
+
+---
+
+# 1. Open Terminal
+
+Open your Linux Terminal.
+
+You can usually open it by:
+
+* Pressing `Ctrl + Alt + T`
+* Searching for **Terminal** from the applications menu
+
+---
+
+# 2. Update System Packages
+
+Before installing required tools, update your system packages:
+
+```bash
+sudo apt update
+```
+
+Upgrade installed packages:
+
+```bash
+sudo apt upgrade
+```
+
+> Note: Commands in this guide are based on Debian/Ubuntu-based distributions.
+
+---
+
+# 3. Install Required Tools
+
+## Install Python
+
+Check if Python is installed:
+
+```bash
+python3 --version
+```
+
+If Python is not installed:
+
+```bash
+sudo apt install python3
+```
+
+---
+
+## Install pip
+
+Check pip:
+
+```bash
+pip3 --version
+```
+
+If pip is not installed:
+
+```bash
+sudo apt install python3-pip
+```
+
+---
+
+## Install Git
+
+Check Git:
+
+```bash
+git --version
+```
+
+Install Git:
+
+```bash
+sudo apt install git
+```
+
+---
+
+# 4. Install virtualenv
+
+Install virtualenv globally:
+
+```bash
+pip3 install virtualenv
+```
+
+Check installation:
+
+```bash
+virtualenv --version
+```
+
+---
+
+# 5. Clone the Project Repository
+
+Navigate to the location where you want to store the project:
+
+Example:
+
+```bash
+cd Desktop
+```
+
+Clone the repository:
+
+```bash
+git clone Repository_URL
+```
+
+Move into the project directory:
+
+```bash
+cd Project_Name
+```
+
+---
+
+# 6. Create a Virtual Environment
+
+Create a virtual environment using virtualenv:
+
+```bash
+virtualenv denv
+```
+
+A new folder named `denv` will be created.
+
+Example:
+
+```text
+Project_Name
+│
+├── denv
+├── manage.py
+├── requirements.txt
+└── project_folder
+```
+
+> The virtual environment folder is not included in the GitHub repository. Each user must create their own environment locally.
+
+---
+
+# 7. Activate the Virtual Environment
+
+Activate the environment:
+
+```bash
+source denv/bin/activate
+```
+
+After successful activation:
+
+```text
+(denv) user@computer:~/Project_Name$
+```
+
+The `(denv)` label means the virtual environment is active.
+
+---
+
+# 8. Install Project Dependencies
+
+Install required packages:
+
+```bash
+pip install -r requirements.txt
+```
+
+All required package versions are defined inside:
+
+```text
+requirements.txt
+```
+
+---
+
+# 9. Configure Project Settings
+
+Check the Django project configuration.
+
+Typical structure:
+
+```text
+Project_Name
+│
+├── manage.py
+│
+├── project_folder
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+│
+└── apps
+    ├── models.py
+    ├── views.py
+    └── admin.py
+```
+
+Depending on the project, configure:
+
+* Database settings
+* Environment variables
+* Secret keys
+* External services
+
+---
+
+# 10. Configure Database
+
+## SQLite Projects
+
+No additional installation is required.
+
+Continue to the migration step.
+
+---
+
+## PostgreSQL Projects
+
+Install PostgreSQL:
+
+```bash
+sudo apt install postgresql postgresql-contrib
+```
+
+Check PostgreSQL status:
+
+```bash
+sudo systemctl status postgresql
+```
+
+Create a database:
+
+```bash
+sudo -u postgres createdb database_name
+```
+
+Update Django database settings with your local PostgreSQL credentials.
+
+Example:
+
+```python
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "database_name",
+        "USER": "postgres",
+        "PASSWORD": "your_password",
+        "HOST": "localhost",
+        "PORT": "5432",
+    }
+}
+```
+
+---
+
+# 11. Apply Django Migrations
+
+Create migrations:
+
+```bash
+python3 manage.py makemigrations
+```
+
+Apply migrations:
+
+```bash
+python3 manage.py migrate
+```
+
+---
+
+# 12. Create Django Admin Account
+
+Create a superuser:
+
+```bash
+python3 manage.py createsuperuser
+```
+
+Enter:
+
+```text
+Username:
+Email address:
+Password:
+```
+
+Admin panel:
+
+```text
+http://127.0.0.1:8000/admin/
+```
+
+---
+
+# 13. Run the Development Server
+
+Start Django:
+
+```bash
+python3 manage.py runserver
+```
+
+Successful output:
+
+```text
+Starting development server at http://127.0.0.1:8000/
+```
+
+Open:
+
+```text
+http://127.0.0.1:8000/
+```
+
+Your project is now running locally.
+
+---
+
+# 14. Stop the Server
+
+Press:
+
+```text
+CTRL + C
+```
+
+inside the Terminal.
+
+---
+
+# 15. Deactivate Virtual Environment
+
+When finished:
+
+```bash
+deactivate
+```
+
+---
+
+# Common Linux Issues
+
+## Permission Error
+
+If you receive a permission error:
+
+```bash
+sudo command
+```
+
+may be required.
+
+---
+
+## Package Installation Error
+
+Make sure the virtual environment is active:
+
+```bash
+source denv/bin/activate
+```
+
+Then reinstall requirements:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## Database Connection Error
+
+Check:
+
+* PostgreSQL service is running
+* Database credentials are correct
+* Database exists
+* Django settings match your local database
+
+---
+
+# ✅ Completed
+<hr>
