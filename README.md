@@ -19,10 +19,12 @@ Instructions are provided for all major desktop operating systems, including **W
 <hr>
 <h2>📑 Table of Contents</h2>
 
-- [ِDjango Projects | Windows](#windows-setup-guide) Recommended
+- [ِDjango Projects | Windows](#windows-setup-guide)
 - [Django Projects | Linux](#linux-setup-guide)
 - [Django Projects | macOS](#macos-setup-guide)
-  
+ 
+🌹 Recommended: Windows
+
 <hr>
 
 # Windows Setup Guide
@@ -456,6 +458,8 @@ http://127.0.0.1:8080/
 
 <img src="https://img.shields.io/badge/Only_For-Django_Projects-darkgreen">
 
+‼️ Note: For Linux, you will need to alternate the project's path for static files in settings.py by yourself.
+
 This guide explains how to run my projects locally on **Linux using the Terminal**.
 
 Follow each step carefully to prepare your environment, install dependencies, configure the project, and run the development server.
@@ -855,6 +859,8 @@ Check:
 # macOS Setup Guide
 
 <img src="https://img.shields.io/badge/Only_For-Django_Projects-darkgreen">
+
+‼️ Note: For macOS, you will need to alternate the project's path for static files in settings.py by yourself.
 
 This guide explains how to run my projects locally on **macOS using the Terminal**.
 
