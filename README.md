@@ -26,7 +26,7 @@ Instructions are provided for all major desktop operating systems, including **W
 - [Django Projects | How To Run Dockerized Projects](#dockerized-projects-setup-guide)
  
  
-🌹 Recommended: If a project is not Dockerized, Windows OS is recommended.
+🌹 If a project is not Dockerized, Windows OS is recommended.
 
 <hr>
 
@@ -1265,6 +1265,8 @@ Check:
 <hr>
 
 # Dockerized Projects Setup Guide
+
+<img src="https://img.shields.io/badge/Only_For-Dockerized-Django_Projects-darkgreen">
 
 This guide explains how to run my **Dockerized Django projects** locally using Docker and Docker Compose.
 
