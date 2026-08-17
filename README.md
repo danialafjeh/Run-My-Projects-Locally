@@ -24,8 +24,8 @@ Instructions are provided for all major desktop operating systems, including **W
 - [Django Projects | Run Dockerized Projects](#dockerized-projects-setup-guide)
  
  
-🌹 If a project is not Dockerized, Windows OS is recommended.<br>
-🌹 If the project is an API project, after running server, use softwares like postman or insomnia to test and work with API's endpoints.
+🌹Note 1: If the project is not Dockerized, Windows OS is recommended.<br>
+🌹Note 2: If the project is an API project, after running server, use softwares like postman or insomnia to test and work with API's endpoints.
 
 <hr>
 
