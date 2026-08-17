@@ -3,7 +3,7 @@
   <img src="https://img.shields.io/badge/Windows-0078D4?logo=None&logoColor=white" >
   <img src="https://img.shields.io/badge/Linux-FCC624?logo=None&logoColor=black" >
   <img src="https://img.shields.io/badge/macOS-555555?logo=None&logoColor=white" >
-   <img src="https://img.shields.io/badge/Dockerized-blue" >
+  <img src="https://img.shields.io/badge/Dockerized-blue" >
 </h1>
 <br>
 
@@ -23,6 +23,8 @@ Instructions are provided for all major desktop operating systems, including **W
 - [ِDjango Projects | Windows](#windows-setup-guide)
 - [Django Projects | Linux](#linux-setup-guide)
 - [Django Projects | macOS](#macos-setup-guide)
+- [Django Projects | Dpckerized](#macos-setup-guide)
+ 
  
 🌹 Recommended: Windows
 
