@@ -20,10 +20,10 @@ Instructions are provided for all major desktop operating systems, including **W
 <hr>
 <h2>📑 Table of Contents</h2>
 
-- [ِDjango Projects | Windows](#windows-setup-guide)
-- [Django Projects | Linux](#linux-setup-guide)
-- [Django Projects | macOS](#macos-setup-guide)
-- [Django Projects | Dockerized](#dockerized-projects-setup-guide)
+- [ِDjango Projects | How To Run On Your Windows](#windows-setup-guide)
+- [Django Projects | How To Run On Your Linux](#linux-setup-guide)
+- [Django Projects | How To Run On Your macOS](#macos-setup-guide)
+- [Django Projects | How To Run Dockerized Projects](#dockerized-projects-setup-guide)
  
  
 🌹 Recommended: If a project is not Dockerized, Windows OS is recommended.
