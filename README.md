@@ -26,7 +26,7 @@ Instructions are provided for all major desktop operating systems, including **W
 - [Django Projects | Dockerized](#dockerized-projects-setup-guide)
  
  
-🌹 Recommended: Windows
+🌹 Recommended: If a project is not Dockerized, Windows OS is recommended.
 
 <hr>
 
