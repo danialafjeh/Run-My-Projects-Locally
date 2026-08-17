@@ -1885,3 +1885,6 @@ Use the project
 You don't need to manually install the project's Python environment or PostgreSQL on your computer.
 
 **Clone → Compose → Run → Open the browser.** 🚀
+
+# ✅ Completed
+<hr>
