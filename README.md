@@ -23,7 +23,7 @@ Instructions are provided for all major desktop operating systems, including **W
 - [ِDjango Projects | Windows](#windows-setup-guide)
 - [Django Projects | Linux](#linux-setup-guide)
 - [Django Projects | macOS](#macos-setup-guide)
-- [Django Projects | Dpckerized](#macos-setup-guide)
+- [Django Projects | Dockerized](#dockerized-projects-setup-guide)
  
  
 🌹 Recommended: Windows
@@ -1263,3 +1263,625 @@ Check:
 
 # ✅ Completed
 <hr>
+
+# Dockerized Projects Setup Guide
+
+This guide explains how to run my **Dockerized Django projects** locally using Docker and Docker Compose.
+
+The main goal is to make it possible to run the projects without manually installing Python, Django, PostgreSQL, or the project's Python dependencies on the host operating system.
+
+If a project contains a `Dockerfile` and a `docker-compose.yaml` file, you can generally follow the steps below.
+
+---
+
+## 1. Requirements
+
+The only main requirement is **Docker**.
+
+You do **not** need to install the following separately on your computer:
+
+* Python
+* Django
+* PostgreSQL
+* `pip`
+* The project's Python packages
+* A Python virtual environment
+
+These dependencies are provided through the Docker images and containers.
+
+### Windows / macOS / Linux
+
+Install Docker Desktop on Windows or macOS, or Docker Engine + Docker Compose on Linux.
+
+After installation, make sure Docker is running.
+
+You can verify Docker with:
+
+```bash
+docker --version
+```
+
+And Docker Compose with:
+
+```bash
+docker compose version
+```
+
+If both commands return version information, Docker is ready.
+
+---
+
+# 2. Clone the Project
+
+First, clone the GitHub repository of the project you want to run.
+
+For example:
+
+```bash
+git clone <PROJECT_REPOSITORY_URL>
+```
+
+Then enter the project directory:
+
+```bash
+cd <PROJECT_DIRECTORY>
+```
+
+You should be able to see files similar to:
+
+```text
+Dockerfile
+docker-compose.yaml
+.dockerignore
+entrypoint.sh
+manage.py
+requirements.txt
+```
+
+The exact structure can be different depending on the project.
+
+---
+
+# 3. Make Sure Docker Is Running
+
+Before starting the project, make sure Docker Desktop / Docker Engine is running.
+
+On Windows and macOS, simply opening Docker Desktop is normally enough.
+
+Docker Compose communicates with the Docker Engine to create and manage the required containers.
+
+---
+
+# 4. Build and Start the Project
+
+From the project's root directory, run:
+
+```bash
+docker compose up --build
+```
+
+The `--build` option tells Docker Compose to build the project's Docker image when necessary.
+
+During the first run, Docker may need to download images such as:
+
+```text
+python:3.13-slim
+postgres:18
+```
+
+Depending on your internet connection, the first build may take some time.
+
+After the images are ready, Docker Compose creates the required resources:
+
+```text
+Docker Images
+      ↓
+Docker Containers
+      ↓
+Django + PostgreSQL
+```
+
+---
+
+# 5. What Docker Compose Does
+
+The `docker-compose.yaml` file defines the services required by the project.
+
+For example, a Django project may contain:
+
+```yaml
+services:
+
+  db:
+    image: postgres:18
+    ...
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ...
+```
+
+This means the project has two main services:
+
+### `db`
+
+The PostgreSQL database runs inside its own container.
+
+### `web`
+
+The Django application runs inside its own container.
+
+Docker Compose creates a private network between these services so Django can communicate with PostgreSQL using the service name.
+
+For example:
+
+```text
+Django
+  |
+  | PostgreSQL connection
+  ↓
+db
+  |
+  ↓
+PostgreSQL
+```
+
+The Django application does **not** need to connect to PostgreSQL installed on your computer.
+
+---
+
+# 6. Environment Variables
+
+Database configuration is passed to the Django container through environment variables defined in Docker Compose.
+
+For example:
+
+```yaml
+environment:
+  POSTGRES_DB: calorieapp
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: DemoOnly
+  POSTGRES_HOST: db
+  POSTGRES_PORT: 5432
+```
+
+Django reads these values using Python's environment-variable functionality.
+
+For example:
+
+```python
+os.environ.get("POSTGRES_HOST")
+```
+
+This allows the same Django project to work inside the Docker environment without depending on the PostgreSQL configuration of the host computer.
+
+---
+
+# 7. Database Initialization and Migrations
+
+The Dockerized projects may use an entrypoint script to prepare Django automatically when the container starts.
+
+For example:
+
+```bash
+python manage.py migrate
+```
+
+This means you normally **do not need to manually run migrations** before starting the project.
+
+The general startup process is:
+
+```text
+Container starts
+      ↓
+PostgreSQL starts
+      ↓
+Database becomes available
+      ↓
+Django migrations run
+      ↓
+Django starts
+```
+
+The exact startup process may differ between projects.
+
+---
+
+# 8. Open the Website
+
+Once the containers are running, open the address specified by the project's Docker Compose configuration.
+
+For projects exposing Django on port `8000`, open:
+
+```text
+http://127.0.0.1:8000/
+```
+
+or:
+
+```text
+http://localhost:8000/
+```
+
+You should now be able to use the Django project normally through your browser.
+
+For projects with Django Admin enabled, the admin panel is usually available at:
+
+```text
+http://127.0.0.1:8000/admin/
+```
+
+If the project provides demo credentials, they should be documented in that project's README.
+
+---
+
+# 9. Docker Volumes and Database Data
+
+Dockerized projects may use a named volume for PostgreSQL data.
+
+For example:
+
+```yaml
+volumes:
+  postgres_data:
+
+services:
+  db:
+    volumes:
+      - postgres_data:/var/lib/postgresql
+```
+
+The volume allows database data to survive even if the PostgreSQL container is removed and recreated.
+
+Therefore, running:
+
+```bash
+docker compose down
+```
+
+does **not** normally delete the PostgreSQL data.
+
+After starting the project again:
+
+```bash
+docker compose up
+```
+
+the existing database volume can be reused.
+
+This is important because Docker containers themselves are disposable, while important persistent data can be stored in volumes.
+
+---
+
+# 10. Stop the Project
+
+When you are finished using the project, press:
+
+```text
+Ctrl + C
+```
+
+if `docker compose up` is currently running in the terminal.
+
+Then you can cleanly stop and remove the project's containers with:
+
+```bash
+docker compose down
+```
+
+This removes the containers and network created by Compose, but normally keeps the database volume.
+
+---
+
+# 11. Start the Project Again
+
+After stopping the project, you can start it again with:
+
+```bash
+docker compose up
+```
+
+You usually do **not** need `--build` every time.
+
+Use:
+
+```bash
+docker compose up --build
+```
+
+when you have changed something that requires rebuilding the Docker image, such as:
+
+* `Dockerfile`
+* `requirements.txt`
+* dependencies installed during the image build
+* files or configuration copied into the image
+
+If the project only needs to be started again without rebuilding the image:
+
+```bash
+docker compose up
+```
+
+is enough.
+
+---
+
+# 12. Run in the Background
+
+Instead of keeping the terminal attached to the container logs, you can run the project in detached mode:
+
+```bash
+docker compose up -d
+```
+
+The `-d` option runs the containers in the background.
+
+You can then access the website normally through your browser.
+
+To see the logs later:
+
+```bash
+docker compose logs
+```
+
+Or follow the logs in real time:
+
+```bash
+docker compose logs -f
+```
+
+---
+
+# 13. Completely Reset the Database
+
+⚠️ **Be careful with this command.**
+
+If you want to remove the PostgreSQL volume and start with a completely fresh database:
+
+```bash
+docker compose down -v
+```
+
+The `-v` option removes the volumes associated with the Compose project.
+
+This means database data stored in the Docker volume will be deleted.
+
+After that, starting the project again:
+
+```bash
+docker compose up --build
+```
+
+will create a new empty PostgreSQL database.
+
+Only use this when you intentionally want to reset the database.
+
+---
+
+# 14. Check Running Containers
+
+To see currently running containers:
+
+```bash
+docker ps
+```
+
+You may see something similar to:
+
+```text
+calorieapp-web-1
+calorieapp-db-1
+```
+
+The exact names depend on the project.
+
+You can also see the project and its services in Docker Desktop.
+
+---
+
+# 15. Common Problems
+
+## Docker is not running
+
+If Docker commands cannot connect to the Docker Engine, make sure Docker Desktop / Docker Engine is running.
+
+---
+
+## Port 8000 is already in use
+
+If another application is already using port `8000`, Docker may fail to start the Django container.
+
+Check the project's `docker-compose.yaml` for:
+
+```yaml
+ports:
+  - "8000:8000"
+```
+
+You can either stop the application using that port or change the published port if the project supports it.
+
+For example:
+
+```yaml
+ports:
+  - "8001:8000"
+```
+
+Then access the project through:
+
+```text
+http://127.0.0.1:8001/
+```
+
+---
+
+## Database connection errors
+
+If Django cannot connect to PostgreSQL, first check the container status:
+
+```bash
+docker compose ps
+```
+
+Then inspect the logs:
+
+```bash
+docker compose logs db
+```
+
+and:
+
+```bash
+docker compose logs web
+```
+
+The PostgreSQL service may need a little time to become ready before Django can connect to it.
+
+Projects using a PostgreSQL health check and `depends_on` configuration may handle this automatically.
+
+---
+
+## Changes are not appearing
+
+If you changed the source code and the changes are not reflected in the container, rebuild the project:
+
+```bash
+docker compose up --build
+```
+
+For development-oriented projects, the Compose configuration may also mount the source code into the container, allowing changes to appear without rebuilding.
+
+This depends on the individual project.
+
+---
+
+# 16. Important: Docker vs. Your Host Computer
+
+One of the main advantages of these projects being Dockerized is that the application's dependencies are isolated from the host system.
+
+For example:
+
+```text
+Your Computer
+│
+├── Docker
+│
+└── Docker Containers
+    │
+    ├── Django / Python
+    │
+    └── PostgreSQL
+```
+
+Therefore, you do not need:
+
+```text
+Python installed on host       ❌
+Django installed on host       ❌
+PostgreSQL installed on host   ❌
+pip installed on host          ❌
+Virtual environment            ❌
+```
+
+You mainly need:
+
+```text
+Docker
+Docker Compose
+Git
+A web browser
+```
+
+---
+
+# 17. Recommended Workflow
+
+For a normal session, the workflow is simply:
+
+### First time
+
+```bash
+git clone <PROJECT_REPOSITORY_URL>
+cd <PROJECT_DIRECTORY>
+docker compose up --build
+```
+
+Then open:
+
+```text
+http://127.0.0.1:8000/
+```
+
+### Later sessions
+
+```bash
+cd <PROJECT_DIRECTORY>
+docker compose up
+```
+
+### When finished
+
+```bash
+docker compose down
+```
+
+### If you intentionally want to reset the database
+
+```bash
+docker compose down -v
+```
+
+---
+
+# 18. Project-Specific Instructions
+
+Each Dockerized project may have additional requirements or features.
+
+Before running a project, check the project's own README for:
+
+* Required environment variables
+* Demo credentials
+* Available URLs
+* Admin credentials
+* Special Docker commands
+* Ports
+* Optional services
+* Project-specific configuration
+
+The instructions in this guide are intended as the **general procedure for my Dockerized Django projects**.
+
+---
+
+## Summary
+
+The basic idea is simple:
+
+```text
+Clone Repository
+      ↓
+Open Project Directory
+      ↓
+Make sure Docker is running
+      ↓
+docker compose up --build
+      ↓
+Docker builds/loads required images
+      ↓
+Docker creates containers
+      ↓
+PostgreSQL starts
+      ↓
+Django migrations run
+      ↓
+Django starts
+      ↓
+Open localhost:8000
+      ↓
+Use the project
+```
+
+You don't need to manually install the project's Python environment or PostgreSQL on your computer.
+
+**Clone → Compose → Run → Open the browser.** 🚀
