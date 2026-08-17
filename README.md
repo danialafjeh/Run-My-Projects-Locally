@@ -1266,7 +1266,7 @@ Check:
 
 # Dockerized Projects Setup Guide
 
-<img src="https://img.shields.io/badge/Only_For-Dockerized-Django_Projects-darkgreen">
+<img src="https://img.shields.io/badge/Only_For-Dockerized_Django_Projects-darkgreen">
 
 This guide explains how to run my **Dockerized Django projects** locally using Docker and Docker Compose.
 
