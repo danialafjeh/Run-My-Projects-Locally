@@ -13,7 +13,7 @@ This repository provides a complete step-by-step guide for running my projects o
 The guide covers the entire setup process, from cloning a repository and creating a virtual environment to installing dependencies, configuring the database, running migrations, and starting the development server.
 <br>
   
-Instructions are provided for all major desktop operating systems, including **Windows**, **Linux**, and **macOS**. Where commands or procedures differ between operating systems, each platform is explained separately to ensure a smooth setup experience.
+Instructions are provided for all major desktop operating systems, including **Windows**, **Linux**, **macOS** plus **Dockerized projects**. Where commands or procedures differ between operating systems, each platform is explained separately to ensure a smooth setup experience.
 
 <hr>
 <h2>📑 Table of Contents</h2>
